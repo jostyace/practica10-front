@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funcion para obtener los usuarios de la API
   async function obtenerUsuarios() {
     try {
-      const response = await fetch("http://localhost:3001/api/users");
+      const response = await fetch("https://practica10-recovered-production.up.railway.app/api/users");
       if (!response.ok) throw new Error("Error al cargar usuarios");
       const usuarios = await response.json();
       mostrarUsuarios(usuarios);
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funcion para obtener los Roles de la API
   async function obtenerRoles() {
     try {
-      const response = await fetch("http://localhost:3001/api/roles");
+      const response = await fetch("https://practica10-recovered-production.up.railway.app/api/roles");
       if (!response.ok) throw new Error("Error al cargar roles");
       roles = await response.json();
     } catch (error) {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const usuarioElemento = document.createElement("tr");
       usuarioElemento.innerHTML = `
             <td>${user.id}</td>
-            <td><img src="http://localhost:3001/api/pictures/${user.picture}" alt="Profile Pic" class="profile-pic"></td>
+            <td><img src="https://practica10-recovered-production.up.railway.app/api/pictures/${user.picture}" alt="Profile Pic" class="profile-pic"></td>
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.role}</td>
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const editUserProfilePic = document.getElementById("picture");
     popularRoles(editUserRole)
     try {
-      const response = await fetch("http://localhost:3001/api/users/" + userId);
+      const response = await fetch("https://practica10-recovered-production.up.railway.app/api/users/" + userId);
       if (!response.ok) {
         throw new Error("Error al cargar datos del usuario");
       }
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function eliminarUsuario(userId, formData, event) {
   try {
     const response = await fetch(
-      `http://localhost:3001/api/users/${userId}`,
+      `https://practica10-recovered-production.up.railway.app/api/users/${userId}`,
       { method: "DELETE" }
     );
     if (!response.ok) {
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funcion para editar Usuario
   async function editarUsuario(userId, formData, event) {
     try {
-      const response = await fetch("http://localhost:3001/api/users/" + userId,
+      const response = await fetch("https://practica10-recovered-production.up.railway.app/api/users/" + userId,
       {
           method: "PATCH",
           body: formData,
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function crearUsuario(formData, event) {
     try {
       const response = await fetch(
-        "http://localhost:3001/api/users/",
+        "https://practica10-recovered-production.up.railway.app/api/users/",
         {
           method: "POST",
           body: formData,
