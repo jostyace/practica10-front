@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/f8efc0949d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="header">
+        <h1><i class="fa-solid fa-users-gear"></i> Users Dashboard</h1>
+      </div>
+
+      <button id="btnCrear">Crear Usuario</button>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Profile Picture</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="listadoUsuarios"></tbody>
+      </table>
+    </div>
+
+    <!-- Modal para editar usuario -->
+    <div id="modalEditar" class="modal">
+      <div class="modal-content">
+        <h2 class="hdr">Editar Usuario</h2>
+        <form id="editUserForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" /><br /><br />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" /><br /><br />
+
+          <label for="role_id">Role:</label>
+          <select id="role_id" name="role_id"></select
+          ><br /><br />
+
+          <label for="picture">Profile Picture:</label>
+          <input type="file" id="picture" name="picture" /><br /><br />
+
+          <button id="submitBtn" type="submit">Update</button>
+          <i class="fa-solid fa-xmark close"></i>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal para crear usuario -->
+    <div id="modalCrear" class="modal">
+      <div class="modal-content">
+        <h2 class="hdr">Crear Usuario</h2>
+        <form id="createUserForm">
+          <label for="createUserName">Name:</label>
+          <input type="text" id="createUserName" name="name" /><br /><br />
+
+          <label for="createUserEmail">Email:</label>
+          <input id="createUserEmail" name="email" />
+          <br /><br />
+
+          <label for="createUserRole">Role:</label>
+          <select id="createUserRole" name="role_id"></select
+          ><br /><br />
+
+          <label for="createUserProfilePic">Profile Picture:</label>
+          <input type="file" id="createUserProfilePic" name="picture" />
+          <br />
+          <span id="errors"></span><br />
+
+          <button id="crearBtn" type="submit">Create</button>
+          <i class="fa-solid fa-xmark close"></i>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal para eliminar usuario -->
+    <div id="modalEliminar" class="modal">
+      <div class="modal-content">
+        <h2 class="hdr">¿Desea eliminar el usuario?</h2>
+        <form id="deleteUserForm">
+          <button
+            class="btnEliminar"
+            data-id="${user.id}"
+            id="deleteBtn"
+            type="submit"
+          >
+            <i class="fa-solid fa-trash"></i> Eliminar
+          </button>
+          <button class="btnEditar" id="cancelBtn" type="reset">
+            Cancelar
+          </button>
+          <i class="fa-solid fa-xmark close"></i>
+        </form>
+      </div>
+    </div>
+
+    <script defer src="./src/main.js"></script>
+  </body>
+</html>
